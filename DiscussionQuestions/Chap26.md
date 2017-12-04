@@ -1,0 +1,13 @@
+ISTA-320, Cohort 3
+ C# Step by Step, Chapter 26 December 3, 2017 
+1. Describe the three concerns that the Model-View-ViewModel design pattern addresses. 
+The concerns that the MVVM design pattern addresses are the separation of the UI, data and business logic, dependencies between components and the ability to enabling different presentations of data without changing the business logic or underlying data model.  It also addresses the need for different elements to be designed and implemented by special skill groups.
+2. Describe in detail how the MVVM design pattern works. 
+ The Model-View-ViewModel (MVVM) design pattern  provides the data used by the app, and the view represents the way in which the data is displayed in the UI. The ViewModel contains the logic that connects the two, taking the user input and converting it into commands that perform business operations on the model, and also taking the data from the model and formatting it in the manner expected by the view.
+3. Describe in detail how data binding works with respect to controls and models.
+Data binding links a property of a control to a property of an object; if the value of the specified property of the object changes, the property in the control that is linked to the object also changes. In addition, data binding can be bidirectional: if the value of a property in a control that uses data binding changes, the modification is propagated to the object to which the control is linked. 
+4. Describe the three methods that the ICommand interface defines. What is the purpose of each method?
+The three methods of the ICommand interface are CanExecute, Execute, and CanExecuteChanged, the descriptions are listed below:
+CanExecute This method returns a Boolean value indicating whether the command can run. Using this method, a ViewModel can enable or disable a command depending on the context. For example, a command that fetches the next customer from a list should be able to run only if there is a next customer to fetch; if there are no more customers, the command should be disabled.
+Execute:  This method runs when the command is invoked.
+ CanExecuteChanged:  This event is triggered when the state of the ViewModel changes.  Under these circumstances, commands that could previously run might now be disabled and vice versa. For example, if the UI invokes a command that fetches the next customer from a list, if that customer is the last customer, then subsequent calls to CanExecute should return false. In these circumstances, the CanExecuteChanged event should fire to indicate that the command has been disabled.
